@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha a Paz | Painel do Responsável</title>
+  <link rel="stylesheet" href="responsavel.css">
+  <script src="responsavel.js" defer></script>
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#inicio" data-page="inicio">
+      <span class="brand-mark">✦</span>
+      <span>
+        <strong>Escolha a Paz</strong>
+        <small>PAINEL DO RESPONSÁVEL</small>
+      </span>
+    </a>
+
+    <div class="profile-mini">
+      <div class="avatar">R</div>
+      <div>
+        <strong>Responsável escolar</strong>
+        <small>Equipe de acolhimento</small>
+      </div>
+      <span class="online-dot"></span>
+    </div>
+
+    <p class="nav-label">MENU PRINCIPAL</p>
+
+    <nav class="side-nav">
+      <button class="nav-item active" data-page="inicio">
+        <span>⌂</span> Visão geral
+      </button>
+
+      <button class="nav-item" data-page="denuncias">
+        <span>▤</span> Denúncias
+        <b class="nav-count" id="navCount">3</b>
+      </button>
+
+      <button class="nav-item" data-page="pessoas">
+        <span>♙</span> Pessoas
+      </button>
+
+      <button class="nav-item" data-page="mensagens">
+        <span>✉</span> Mensagens
+      </button>
+
+      <button class="nav-item" data-page="nova">
+        <span>＋</span> Novo registro
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="help-card">
+        <span>✧</span>
+        <strong>Um ambiente seguro começa com escuta.</strong>
+        <p>Trate cada relato com respeito, cuidado e discrição.</p>
+      </div>
+
+      <button class="nav-item" data-page="orientacoes">
+        <span>ⓘ</span> Orientações
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <div class="breadcrumb">
+        <span>Escolha a Paz</span>
+        <i>/</i>
+        <strong id="currentSection">Visão geral</strong>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-button" id="notificationButton"
+          aria-label="Notificações" title="Notificações">
+          ♧
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="top-user">
+          <div class="avatar small">R</div>
+          <span>Responsável</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- INÍCIO -->
+      <section class="page active" id="page-inicio">
+
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow">SEGUNDA-FEIRA · PAINEL ESCOLAR</p>
+            <h1>Olá, responsável <span>✦</span></h1>
+            <p class="subtitle">
+              Acompanhe os relatos e ajude a construir uma escola mais acolhedora.
+            </p>
+          </div>
+
+          <button class="primary-button" data-go="nova">
+            ＋ Novo registro
+          </button>
+        </div>
+
+        <div class="stats-grid">
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span>Relatos recebidos</span>
+              <span class="stat-icon">▤</span>
+            </div>
+            <strong id="totalReports">12</strong>
+            <small>Registros demonstrativos</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span>Em análise</span>
+              <span class="stat-icon amber">◷</span>
+            </div>
+            <strong id="pendingReports">3</strong>
+            <small>Precisam de acompanhamento</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span>Em acompanhamento</span>
+              <span class="stat-icon blue">◎</span>
+            </div>
+            <strong id="progressReports">5</strong>
+            <small>Com ações em andamento</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span>Resolvidos</span>
+              <span class="stat-icon green">✓</span>
+            </div>
+            <strong id="resolvedReports">4</strong>
+            <small>Com retorno registrado</small>
+          </article>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+          <section class="panel recent-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Denúncias recentes</h2>
+                <p>Veja os últimos relatos recebidos.</p>
+              </div>
+
+              <button class="text-button" data-go="denuncias">
+                Ver todas ↗
+              </button>
+            </div>
+
+            <div class="report-list" id="recentReports"></div>
+          </section>
+
+          <section class="panel quick-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Acesso rápido</h2>
+                <p>Atalhos do painel.</p>
+              </div>
+            </div>
+
+            <button class="quick-link" data-go="denuncias">
+              <span class="quick-icon">▤</span>
+              <span>
+                <strong>Gerenciar denúncias</strong>
+                <small>Analisar e atualizar relatos</small>
+              </span>
+              <b>›</b>
+            </button>
+
+            <button class="quick-link" data-go="pessoas">
+              <span class="quick-icon">♙</span>
+              <span>
+                <strong>Consultar pessoas</strong>
+                <small>Ver participantes envolvidos</small>
+              </span>
+              <b>›</b>
+            </button>
+
+            <button class="quick-link" data-go="mensagens">
+              <span class="quick-icon">✉</span>
+              <span>
+                <strong>Caixa de mensagens</strong>
+                <small>Registrar orientações e retornos</small>
+              </span>
+              <b>›</b>
+            </button>
+
+            <div class="quote-box">
+              <span>“</span>
+              <p>
+                Ouvir com atenção é o primeiro passo para transformar conflitos em diálogo.
+              </p>
+            </div>
+          </section>
+
+        </div>
+
+        <p class="demo-warning">
+          Ambiente de demonstração: os registros exibidos são fictícios e não representam denúncias reais.
+        </p>
+
+      </section>
+
+      <!-- DENÚNCIAS -->
+      <section class="page" id="page-denuncias">
+
+        <div class="page-title-row">
+          <div>
+            <p class="eyebrow">ACOMPANHAMENTO</p>
+            <h1>Denúncias</h1>
+            <p class="subtitle">
+              Consulte os relatos e atualize o andamento de cada situação.
+            </p>
+          </div>
+
+          <button class="primary-button" data-go="nova">
+            ＋ Novo registro
+          </button>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box">
+            ⌕
+            <input id="reportSearch" type="search"
+              placeholder="Buscar por código ou assunto...">
+          </label>
+
+          <select id="statusFilter" aria-label="Filtrar por status">
+            <option value="todos">Todos os status</option>
+            <option value="Em análise">Em análise</option>
+            <option value="Em acompanhamento">Em acompanhamento</option>
+            <option value="Resolvido">Resolvido</option>
+          </select>
+
+          <select id="typeFilter" aria-label="Filtrar por tipo">
+            <option value="todos">Todos os tipos</option>
+            <option>Bullying</option>
+            <option>Conflito</option>
+            <option>Ofensa</option>
+            <option>Briga</option>
+            <option>Outro</option>
+          </select>
+        </div>
+
+        <section class="panel table-panel">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>CÓDIGO</th>
+                  <th>ASSUNTO</th>
+                  <th>LOCAL</th>
+                  <th>DATA</th>
+                  <th>STATUS</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody id="reportsTable"></tbody>
+            </table>
+          </div>
+
+          <div class="empty-state hidden" id="emptyReports">
+            Nenhum relato encontrado com esses filtros.
+          </div>
+        </section>
+
+        <p class="demo-warning">
+          Os relatos e códigos desta tela são exemplos fictícios.
+          Não use este protótipo para guardar dados pessoais ou denúncias reais.
+        </p>
+
+      </section>
+
+      <!-- PESSOAS -->
+      <section class="page" id="page-pessoas">
+
+        <div class="page-title-row">
+          <div>
+            <p class="eyebrow">COMUNIDADE ESCOLAR</p>
+            <h1>Pessoas envolvidas</h1>
+            <p class="subtitle">
+              Identificadores demonstrativos vinculados aos relatos de exemplo.
+            </p>
+          </div>
+        </div>
+
+        <div class="privacy-note">
+          <span>ⓘ</span>
+          <p>
+            Para proteger os estudantes, esta demonstração utiliza códigos anônimos
+            em vez de nomes. Em um sistema real, o acesso a dados de identificação
+            deve ser restrito à equipe autorizada.
+          </p>
+        </div>
+
+        <div class="people-grid" id="peopleGrid"></div>
+
+      </section>
+
+      <!-- MENSAGENS -->
+      <section class="page" id="page-mensagens">
+
+        <div class="page-title-row">
+          <div>
+            <p class="eyebrow">COMUNICAÇÃO</p>
+            <h1>Mensagens e orientações</h1>
+            <p class="subtitle">
+              Registre uma orientação ou um retorno relacionado a um relato fictício.
+            </p>
+          </div>
+        </div>
+
+        <div class="message-layout">
+
+          <section class="panel message-list-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Registros recentes</h2>
+                <p>Mensagens demonstrativas</p>
+              </div>
+            </div>
+
+            <div id="messageList"></div>
+          </section>
+
+          <section class="panel compose-panel">
+            <h2>Escrever mensagem</h2>
+            <p class="muted">Use linguagem respeitosa e acolhedora.</p>
+
+            <form id="messageForm">
+
+              <label for="messageReport">Vincular a um relato</label>
+              <select id="messageReport"></select>
+
+              <label for="messageText">Mensagem / orientação</label>
+              <textarea id="messageText" minlength="5" maxlength="500"
+                placeholder="Escreva uma orientação ou registre o próximo passo..."
+                required></textarea>
+
+              <button class="primary-button" type="submit">
+                Salvar mensagem ↗
+              </button>
+
+              <p class="form-feedback" id="messageFeedback" role="status"></p>
+
+            </form>
+          </section>
+
+        </div>
+
+      </section>
+
+      <!-- NOVO REGISTRO -->
+      <section class="page" id="page-nova">
+
+        <div class="page-title-row">
+          <div>
+            <p class="eyebrow">REGISTRO INTERNO</p>
+            <h1>Novo registro</h1>
+            <p class="subtitle">
+              O responsável também pode registrar uma situação que precise de acompanhamento.
+            </p>
+          </div>
+        </div>
+
+        <section class="panel form-panel">
+
+          <form id="newReportForm">
+
+            <div class="form-grid">
+
+              <div>
+                <label for="newType">Tipo de situação</label>
+                <select id="newType" required>
+                  <option value="">Selecione</option>
+                  <option>Bullying</option>
+                  <option>Conflito</option>
+                  <option>Ofensa</option>
+                  <option>Briga</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="newPlace">Local</label>
+                <select id="newPlace" required>
+                  <option value="">Selecione</option>
+                  <option>Sala de aula</option>
+                  <option>Pátio</option>
+                  <option>Corredor</option>
+                  <option>Ambiente virtual</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+
+              <div class="full">
+                <label for="newReporter">Identificação demonstrativa</label>
+                <input id="newReporter" maxlength="30"
+                  placeholder="Ex.: Estudante A / Observação da equipe">
+              </div>
+
+              <div class="full">
+                <label for="newDescription">Descrição da situação</label>
+                <textarea id="newDescription" minlength="15" maxlength="1000"
+                  placeholder="Descreva os fatos de forma objetiva, sem incluir informações desnecessárias..."
+                  required></textarea>
+              </div>
+
+            </div>
+
+            <div class="privacy-note compact">
+              <span>ⓘ</span>
+              <p>
+                Este protótipo não envia nem armazena os dados em um servidor.
+                Utilize apenas informações fictícias.
+              </p>
+            </div>
+
+            <button class="primary-button" type="submit">
+              Criar registro demonstrativo ↗
+            </button>
+
+            <p class="form-feedback" id="newFeedback" role="status"></p>
+
+          </form>
+
+        </section>
+
+      </section>
+
+      <!-- ORIENTAÇÕES -->
+      <section class="page" id="page-orientacoes">
+
+        <div class="page-title-row">
+          <div>
+            <p class="eyebrow">BOAS PRÁTICAS</p>
+            <h1>Orientações</h1>
+            <p class="subtitle">
+              Cuidados importantes para o atendimento responsável de relatos.
+            </p>
+          </div>
+        </div>
+
+        <div class="guidance-grid">
+
+          <article class="panel guidance-card">
+            <span>01</span>
+            <h2>Escute sem julgar</h2>
+            <p>
+              Receba o relato com calma, respeito e atenção.
+              Evite interromper ou minimizar o que foi contado.
+            </p>
+          </article>
+
+          <article class="panel guidance-card">
+            <span>02</span>
+            <h2>Preserve a privacidade</h2>
+            <p>
+              Compartilhe informações apenas com profissionais autorizados
+              e somente quando necessário.
+            </p>
+          </article>
+
+          <article class="panel guidance-card">
+            <span>03</span>
+            <h2>Acompanhe os próximos passos</h2>
+            <p>
+              Registre encaminhamentos de forma responsável e verifique
+              se a situação recebeu atenção adequada.
+            </p>
+          </article>
+
+          <article class="panel guidance-card">
+            <span>04</span>
+            <h2>Priorize a segurança</h2>
+            <p>
+              Se houver risco imediato, acione a equipe responsável da escola
+              e os serviços de emergência adequados.
+            </p>
+          </article>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- JANELA DE DETALHES -->
+  <div class="modal-backdrop hidden" id="detailModal">
+
+    <section class="detail-modal" role="dialog" aria-modal="true"
+      aria-labelledby="modalTitle">
+
+      <button class="modal-close" id="closeModal" aria-label="Fechar">
+        ×
+      </button>
+
+      <p class="eyebrow">DETALHES DO RELATO</p>
+      <h2 id="modalTitle">Relato</h2>
+
+      <div id="modalContent"></div>
+
+      <div class="modal-actions">
+        <label for="modalStatus">Atualizar status</label>
+
+        <select id="modalStatus">
+          <option>Em análise</option>
+          <option>Em acompanhamento</option>
+          <option>Resolvido</option>
+        </select>
+
+        <button class="primary-button" id="saveStatus">
+          Salvar atualização
+        </button>
+      </div>
+
+      <p class="form-feedback" id="statusFeedback" role="status"></p>
+
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
