@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha a Paz | Acesso da Equipe</title>
+
+    <link rel="stylesheet" href="tema.css">
+    <link rel="stylesheet" href="senha-responsavel.css">
+</head>
+
+<body class="login-page">
+
+<main class="login-shell">
+
+    <section class="login-brand">
+        <div class="brand-mark large">♧</div>
+
+        <p class="eyebrow">CONVIVÊNCIA • RESPEITO • ACOLHIMENTO</p>
+
+        <h1>Escolha <span>a Paz.</span></h1>
+
+        <p class="subtitle">
+            Área exclusiva para a equipe responsável pelo acompanhamento
+            das situações de convivência escolar.
+        </p>
+
+        <div class="decor-line"></div>
+
+        <p class="login-quote">
+            “Cuidar do ambiente escolar também é uma forma de escolher a paz.”
+        </p>
+    </section>
+
+    <section class="login-card panel">
+
+        <div class="user-symbol">♙</div>
+
+        <p class="eyebrow">ÁREA RESTRITA</p>
+
+        <h2>Acesso da equipe</h2>
+
+        <p class="muted">
+            Entre com suas credenciais institucionais.
+        </p>
+
+        <form id="responsavelForm">
+
+            <label class="field" for="email">
+                E-mail institucional
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="seuemail@escola.com"
+                required
+            >
+
+            <label class="field" for="password">
+                Senha de acesso
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Digite sua senha"
+                required
+            >
+
+            <label class="field" for="cargo">
+                Cargo
+            </label>
+
+            <select id="cargo" required>
+                <option value="">Selecione seu cargo</option>
+                <option value="secretaria">Secretaria do colégio</option>
+                <option value="diretora">Diretora</option>
+            </select>
+
+            <p id="loginErro" class="login-error"></p>
+
+            <button class="primary login-button" type="submit">
+                Acessar painel <span>→</span>
+            </button>
+
+        </form>
+
+        <a href="senha1.html" class="back-link">
+            ← Voltar para o acesso dos alunos
+        </a>
+
+        <p class="login-foot">
+            Acesso destinado exclusivamente à equipe autorizada da escola.
+        </p>
+
+    </section>
+
+</main>
+
+<script src="senha-responsavel.js"></script>
+
+</body>
+</html>
