@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova Denúncia | Escolha a Paz</title>
+
+    <link rel="stylesheet" href="escalhaspaz.css">
+    <script src="escalhaspaz.js" defer></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="escalhaspaz.html">
+        <span class="brand-symbol">✺</span>
+        <span>Escolha a Paz</span>
+    </a>
+
+    <nav class="navigation">
+        <a href="escalhaspaz.html">Início</a>
+        <a href="paz-perfil.html">Perfil</a>
+    </nav>
+
+</header>
+
+<main class="page-container">
+
+    <p class="overline">ESPAÇO DE ESCUTA</p>
+
+    <h1 class="page-heading">
+        Nova denúncia
+    </h1>
+
+    <p class="page-intro">
+        Conte, com suas palavras, o que aconteceu.
+        Evite incluir senhas, endereços ou dados pessoais desnecessários.
+    </p>
+
+    <form class="form-card" id="reportForm">
+
+        <label for="category">
+            Que tipo de situação aconteceu?
+        </label>
+
+        <select id="category" required>
+
+            <option value="">
+                Selecione uma opção
+            </option>
+
+            <option>Briga ou agressão</option>
+
+            <option>Bullying ou intimidação</option>
+
+            <option>Ofensas ou desrespeito</option>
+
+            <option>Conflito entre colegas</option>
+
+            <option>Outro tipo de situação</option>
+
+        </select>
+
+        <label for="place">
+            Onde aconteceu?
+        </label>
+
+        <select id="place" required>
+
+            <option value="">
+                Selecione o local
+            </option>
+
+            <option>Sala de aula</option>
+
+            <option>Pátio ou corredor</option>
+
+            <option>Banheiro ou vestiário</option>
+
+            <option>Entrada ou saída da escola</option>
+
+            <option>Ambiente virtual relacionado à escola</option>
+
+            <option>Outro local</option>
+
+        </select>
+
+        <label for="description">
+            Descreva o que aconteceu
+        </label>
+
+        <textarea
+            id="description"
+            minlength="15"
+            maxlength="1500"
+            placeholder="Explique a situação com calma..."
+            required
+        ></textarea>
+
+        <p class="helper-text">
+            Não é necessário escrever nomes de estudantes.
+            Se alguém estiver em perigo imediato, procure um adulto
+            responsável ou a equipe da escola.
+        </p>
+
+        <button class="primary-button" type="submit">
+            ENVIAR RELATO ↗
+        </button>
+
+        <div
+            class="success-message"
+            id="successMessage"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </form>
+
+    <a class="back-link" href="escalhaspaz.html">
+        ← Voltar para o início
+    </a>
+
+</main>
+
+<footer class="footer">
+
+    <span>ESCOLHA A PAZ</span>
+
+    <span>Respeito e acolhimento sempre.</span>
+
+</footer>
+
+</body>
+</html>
