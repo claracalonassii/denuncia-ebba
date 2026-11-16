@@ -1,0 +1,42 @@
+
+.login-error {
+    color: #e58b8b;
+    font-size: 12px;
+    margin-top: 12px;
+    text-align: center;
+    min-height: 16px;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    color: var(--gold);
+    font-size: 12px;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.back-link:hover {
+    opacity: .75;
+}
+
+.login-card select {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.login-card input,
+.login-card select {
+    margin-bottom: 15px;
+}
+
+.login-card .login-button {
+    margin-top: 12px;
+}
+
+@media(max-width:760px) {
+    .back-link {
+        margin-top: 18px;
+    }
+}
