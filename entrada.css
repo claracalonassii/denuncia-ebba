@@ -1,0 +1,242 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #0c1010;
+    color: #f1f0eb;
+}
+
+.pagina {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(ellipse at 15% 45%, rgba(194, 180, 145, .09), transparent 35%),
+        radial-gradient(ellipse at 90% 10%, rgba(151, 177, 168, .08), transparent 35%),
+        #0c1010;
+}
+
+.linhas {
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    opacity: .13;
+
+    background: repeating-radial-gradient(
+        ellipse at 30% 30%,
+        transparent 0,
+        transparent 35px,
+        #c9c3b5 36px,
+        transparent 37px
+    );
+
+    transform: rotate(-25deg);
+    pointer-events: none;
+}
+
+.painel {
+    width: min(100%, 850px);
+    min-height: 580px;
+
+    background: linear-gradient(
+        145deg,
+        #202626,
+        #141a19 65%,
+        #111615
+    );
+
+    border: 1px solid rgba(215, 207, 185, .16);
+    border-radius: 18px;
+
+    padding: 30px 45px 20px;
+
+    position: relative;
+    z-index: 1;
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, .45);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+
+    background: #252c29;
+    border: 1px solid #b9ad8e;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #cdbb91;
+    font-weight: bold;
+}
+
+.topo span {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #c9bd9f;
+}
+
+.conteudo {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+
+.simbolo {
+    font-size: 65px;
+    color: #cabb94;
+    text-shadow: 2px 3px 0 #080a09;
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 43px);
+    letter-spacing: -1px;
+    color: #f0eee8;
+    font-weight: 900;
+}
+
+h1 span {
+    color: #c9b991;
+}
+
+.subtitulo {
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #c5b895;
+}
+
+.linha-dourada {
+    width: 65px;
+    height: 1px;
+    background: #c9b991;
+    margin: 25px auto;
+}
+
+h2 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #e9e7df;
+}
+
+.descricao {
+    font-size: 13px;
+    color: #a9b0ad;
+    margin-top: 10px;
+}
+
+.opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 38px;
+}
+
+.opcao {
+    width: 220px;
+    min-height: 55px;
+    padding: 12px 18px;
+
+    background: #d3c6a7;
+    border: 1px solid #d3c6a7;
+    border-radius: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: #171b19;
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+.opcao:hover {
+    background: #e4dac4;
+    border-color: #e4dac4;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+}
+
+.icone {
+    font-size: 22px;
+}
+
+.seta {
+    font-size: 19px;
+}
+
+.rodape-texto {
+    margin-top: 35px;
+    font-size: 11px;
+    color: #929b96;
+}
+
+footer {
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #858e88;
+    padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+
+    .pagina {
+        padding: 15px;
+    }
+
+    .painel {
+        padding: 25px 20px;
+        min-height: 550px;
+    }
+
+    .opcoes {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .opcao {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    .subtitulo {
+        font-size: 8px;
+    }
+}
