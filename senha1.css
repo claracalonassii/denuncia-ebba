@@ -1,0 +1,139 @@
+.login-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 25px;
+    background:
+        radial-gradient(ellipse at 18% 55%, rgba(200,185,149,.13), transparent 32%),
+        radial-gradient(ellipse at 85% 10%, rgba(158,187,212,.1), transparent 30%),
+        #0c1011;
+    overflow-x: hidden;
+}
+
+.login-shell {
+    width: min(1000px, 100%);
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 55px;
+    align-items: center;
+}
+
+.login-brand {
+    padding: 25px 10px;
+}
+
+.large {
+    width: 64px;
+    height: 64px;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.login-brand h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+}
+
+.login-brand .subtitle {
+    max-width: 440px;
+    font-size: 14px;
+}
+
+.decor-line {
+    height: 1px;
+    width: 150px;
+    background: var(--gold);
+    margin: 32px 0 20px;
+}
+
+.login-quote {
+    font-family: Manrope, sans-serif;
+    color: #d9d4c7;
+    font-size: 14px;
+    max-width: 350px;
+    line-height: 1.7;
+}
+
+.login-card {
+    padding: 34px 32px;
+    text-align: left;
+    box-shadow: 0 25px 80px #0007;
+}
+
+.user-symbol {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e4e0d6;
+    color: #151a18;
+    font-size: 35px;
+}
+
+.login-card h2 {
+    text-align: center;
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.login-card > .muted,
+.login-card > .eyebrow {
+    text-align: center;
+}
+
+.login-card form {
+    margin-top: 18px;
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-button span {
+    font-size: 18px;
+}
+
+.login-foot {
+    text-align: center;
+    color: var(--soft);
+    font-size: 9px;
+    margin-top: 19px;
+    line-height: 1.6;
+}
+
+@media(max-width:760px) {
+    .login-shell {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 460px;
+    }
+
+    .login-brand {
+        text-align: center;
+        padding: 10px 5px;
+    }
+
+    .login-brand .large {
+        margin: 0 auto 18px;
+    }
+
+    .login-brand .subtitle,
+    .login-quote {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .decor-line {
+        margin: 20px auto;
+    }
+
+    .login-card {
+        padding: 27px 22px;
+    }
+}
