@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escolha a Paz | Entrar</title>
+<link rel="stylesheet" href="tema.css">
+<link rel="stylesheet" href="senha1.css">
+</head>
+<body class="login-page">
+<main class="login-shell">
+  <section class="login-brand">
+    <div class="brand-mark large">♧</div>
+    <p class="eyebrow">CONVIVÊNCIA • RESPEITO • ACOLHIMENTO</p>
+    <h1>Escolha <span>a Paz.</span></h1>
+    <p class="subtitle">Um espaço seguro para comunicar situações de conflito e fortalecer uma convivência escolar respeitosa.</p>
+    <div class="decor-line"></div>
+    <p class="login-quote">“Pequenas atitudes constroem um ambiente melhor para todos.”</p>
+  </section>
+  <section class="login-card panel">
+    <div class="user-symbol">♙</div>
+    <p class="eyebrow">ACESSO À PLATAFORMA</p>
+    <h2>Bem-vindo(a)!</h2>
+    <p class="muted">Entre com seus dados para continuar.</p>
+    <form id="loginForm">
+      <label class="field" for="email">E-mail</label>
+      <input id="email" type="email" placeholder="seuemail@escola.com" required>
+      <label class="field" for="password">Senha</label>
+      <input id="password" type="password" placeholder="Digite sua senha" required>
+      <label class="field" for="classroom">Turma</label>
+      <input id="classroom" type="text" placeholder="Ex.: 2º A" required>
+      <label class="field" for="profile">Tipo de acesso</label>
+      <select id="profile">
+        <option value="aluno">Aluno(a)</option>
+        <option value="responsavel">Responsável / Equipe escolar</option>
+      </select>
+      <button class="primary login-button" type="submit">Entrar na plataforma <span>→</span></button>
+    </form>
+    <p class="login-foot">Protótipo escolar demonstrativo. Não utilize senhas reais.</p>
+  </section>
+</main>
+<div id="toast" class="toast"></div>
+<script src="senha1.js"></script>
+</body>
+</html>
