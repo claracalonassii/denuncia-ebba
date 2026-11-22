@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -36,7 +37,7 @@
 
       <button class="nav-item" data-page="denuncias">
         <span>▤</span> Denúncias
-        <b class="nav-count" id="navCount">3</b>
+        <b class="nav-count" id="navCount">0</b>
       </button>
 
       <button class="nav-item" data-page="pessoas">
@@ -99,7 +100,7 @@
 
         <div class="welcome-row">
           <div>
-            <p class="eyebrow">SEGUNDA-FEIRA · PAINEL ESCOLAR</p>
+            <p class="eyebrow">PAINEL ESCOLAR</p>
             <h1>Olá, responsável <span>✦</span></h1>
             <p class="subtitle">
               Acompanhe os relatos e ajude a construir uma escola mais acolhedora.
@@ -118,7 +119,7 @@
               <span>Relatos recebidos</span>
               <span class="stat-icon">▤</span>
             </div>
-            <strong id="totalReports">12</strong>
+            <strong id="totalReports">0</strong>
             <small>Registros demonstrativos</small>
           </article>
 
@@ -127,7 +128,7 @@
               <span>Em análise</span>
               <span class="stat-icon amber">◷</span>
             </div>
-            <strong id="pendingReports">3</strong>
+            <strong id="pendingReports">0</strong>
             <small>Precisam de acompanhamento</small>
           </article>
 
@@ -136,7 +137,7 @@
               <span>Em acompanhamento</span>
               <span class="stat-icon blue">◎</span>
             </div>
-            <strong id="progressReports">5</strong>
+            <strong id="progressReports">0</strong>
             <small>Com ações em andamento</small>
           </article>
 
@@ -145,7 +146,7 @@
               <span>Resolvidos</span>
               <span class="stat-icon green">✓</span>
             </div>
-            <strong id="resolvedReports">4</strong>
+            <strong id="resolvedReports">0</strong>
             <small>Com retorno registrado</small>
           </article>
 
@@ -349,7 +350,7 @@
             <form id="messageForm">
 
               <label for="messageReport">Vincular a um relato</label>
-              <select id="messageReport"></select>
+              <select id="messageReport" required></select>
 
               <label for="messageText">Mensagem / orientação</label>
               <textarea id="messageText" minlength="5" maxlength="500"
