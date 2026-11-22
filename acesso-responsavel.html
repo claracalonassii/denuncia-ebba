@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Escolha a Paz | Acesso da Equipe</title>
 
-    <link rel="stylesheet" href="tema.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="senha-responsavel.css">
+
+    <script src="senha-responsavel.js" defer></script>
 </head>
 
 <body class="login-page">
@@ -15,11 +22,16 @@
 <main class="login-shell">
 
     <section class="login-brand">
+
         <div class="brand-mark large">♧</div>
 
-        <p class="eyebrow">CONVIVÊNCIA • RESPEITO • ACOLHIMENTO</p>
+        <p class="eyebrow">
+            CONVIVÊNCIA • RESPEITO • ACOLHIMENTO
+        </p>
 
-        <h1>Escolha <span>a Paz.</span></h1>
+        <h1>
+            Escolha <span>a Paz.</span>
+        </h1>
 
         <p class="subtitle">
             Área exclusiva para a equipe responsável pelo acompanhamento
@@ -31,9 +43,10 @@
         <p class="login-quote">
             “Cuidar do ambiente escolar também é uma forma de escolher a paz.”
         </p>
+
     </section>
 
-    <section class="login-card panel">
+    <section class="login-card">
 
         <div class="user-symbol">♙</div>
 
@@ -79,16 +92,16 @@
                 <option value="diretora">Diretora</option>
             </select>
 
-            <p id="loginErro" class="login-error"></p>
-
             <button class="primary login-button" type="submit">
                 Acessar painel <span>→</span>
             </button>
 
+            <p id="loginErro" class="login-error" role="alert"></p>
+
         </form>
 
-        <a href="senha1.html" class="back-link">
-            ← Voltar para o acesso dos alunos
+        <a href="index.html" class="back-link">
+            ← Voltar para a página inicial
         </a>
 
         <p class="login-foot">
@@ -98,8 +111,6 @@
     </section>
 
 </main>
-
-<script src="senha-responsavel.js"></script>
 
 </body>
 </html>
