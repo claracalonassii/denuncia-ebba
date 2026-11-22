@@ -1,11 +1,10 @@
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("responsavelForm");
     const erro = document.getElementById("loginErro");
 
-    // Credenciais fictícias para demonstração do projeto.
-    // Substitua pelos dados de teste que você definiu para a apresentação.
     const equipeAutorizada = [
         {
             email: "secretaria@escola.com",
@@ -20,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     form.addEventListener("submit", (event) => {
+
         event.preventDefault();
 
         const email = document.getElementById("email")
@@ -60,3 +60,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
