@@ -1,4 +1,24 @@
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* VERIFICAÇÃO DE ACESSO AO PAINEL */
+
+  let acesso = null;
+
+  try {
+    acesso = JSON.parse(
+      localStorage.getItem("escolhaPazResponsavel") || "null"
+    );
+  } catch (erro) {
+    acesso = null;
+  }
+
+  if (!acesso || acesso.autenticado !== true) {
+    window.location.replace("senha-responsavel.html");
+    return;
+  }
+
+  /* DADOS DEMONSTRATIVOS */
 
   const reports = [
     {
@@ -79,12 +99,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const $ = id => document.getElementById(id);
 
+  /* DATA ATUAL */
+
+  function getCurrentDate() {
+    const hoje = new Date();
+
+    const dia = String(hoje.getDate()).padStart(2, "0");
+    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+    const ano = hoje.getFullYear();
+
+    return `${dia}/${mes}/${ano}`;
+  }
+
+  /* GERAR PRÓXIMO CÓDIGO */
+
+  function getNextReportId() {
+    const maiorNumero = reports.reduce((maior, report) => {
+      const numero = Number(report.id.replace("EP-", ""));
+      return Math.max(maior, numero);
+    }, 0);
+
+    return "EP-" + String(maiorNumero + 1).padStart(3, "0");
+  }
+
+  /* CLASSE DOS STATUS */
+
   const statusClass = status =>
     status === "Resolvido"
       ? "done"
       : status === "Em acompanhamento"
       ? "progress"
       : "analysis";
+
+  /* PROTEÇÃO DE TEXTO */
 
   const escapeHTML = value =>
     String(value).replace(/[&<>"']/g, char => ({
@@ -117,7 +164,11 @@ document.addEventListener("DOMContentLoaded", () => {
       section.classList.remove("active");
     });
 
-    $("page-" + page).classList.add("active");
+    const selectedPage = $("page-" + page);
+
+    if (!selectedPage) return;
+
+    selectedPage.classList.add("active");
 
     document.querySelectorAll(".nav-item[data-page]").forEach(button => {
       button.classList.toggle(
@@ -141,7 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelectorAll("[data-page]").forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", event => {
+      event.preventDefault();
       goTo(button.dataset.page);
     });
   });
@@ -168,24 +220,28 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  /* ATUALIZA OS INDICADORES */
+  /* ATUALIZAR INDICADORES */
 
   function updateStats() {
 
-    $("totalReports").textContent =
-      12 + Math.max(0, reports.length - 5);
+    const pending = reports.filter(
+      report => report.status === "Em análise"
+    ).length;
 
-    $("pendingReports").textContent =
-      reports.filter(r => r.status === "Em análise").length;
+    const progress = reports.filter(
+      report => report.status === "Em acompanhamento"
+    ).length;
 
-    $("progressReports").textContent =
-      reports.filter(r => r.status === "Em acompanhamento").length;
+    const resolved = reports.filter(
+      report => report.status === "Resolvido"
+    ).length;
 
-    $("resolvedReports").textContent =
-      reports.filter(r => r.status === "Resolvido").length;
+    $("totalReports").textContent = reports.length;
+    $("pendingReports").textContent = pending;
+    $("progressReports").textContent = progress;
+    $("resolvedReports").textContent = resolved;
 
-    $("navCount").textContent =
-      reports.filter(r => r.status === "Em análise").length;
+    $("navCount").textContent = pending;
   }
 
   /* DENÚNCIAS RECENTES */
@@ -395,7 +451,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", event => {
 
-    if (event.key === "Escape") {
+    if (
+      event.key === "Escape" &&
+      !$("detailModal").classList.contains("hidden")
+    ) {
       closeModal();
     }
 
@@ -409,14 +468,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     selectedReport.status = $("modalStatus").value;
 
-    $("statusFeedback").textContent =
-      "Status atualizado nesta demonstração.";
-
     updateStats();
 
     renderRecent();
 
     renderTable();
+
+    const reportId = selectedReport.id;
+
+    openDetail(reportId);
+
+    $("statusFeedback").textContent =
+      "Status atualizado nesta demonstração.";
 
     showToast("Status atualizado no protótipo.");
 
@@ -426,39 +489,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderPeople() {
 
-    const people = [
+    const people = [];
 
-      {
-        code: "Estudante A",
-        role: "Pessoa que enviou um relato",
-        count: 1
-      },
+    reports.forEach(report => {
 
-      {
-        code: "Estudante B",
-        role: "Pessoa que enviou um relato",
-        count: 1
-      },
+      const existingPerson = people.find(
+        person => person.code === report.reporter
+      );
 
-      {
-        code: "Estudante C",
-        role: "Pessoa que enviou um relato",
-        count: 1
-      },
-
-      {
-        code: "Estudante D",
-        role: "Pessoa que enviou um relato",
-        count: 1
-      },
-
-      {
-        code: "Observação da equipe",
-        role: "Registro feito pela equipe",
-        count: 1
+      if (existingPerson) {
+        existingPerson.count++;
+      } else {
+        people.push({
+          code: report.reporter,
+          role: report.reporter === "Observação da equipe"
+            ? "Registro feito pela equipe"
+            : "Pessoa que enviou um relato",
+          count: 1
+        });
       }
 
-    ];
+    });
 
     $("peopleGrid").innerHTML = people.map(person => `
 
@@ -512,6 +563,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </p>
       `;
 
+    const selectedValue = $("messageReport").value;
+
     $("messageReport").innerHTML = reports.map(report => `
 
       <option value="${escapeHTML(report.id)}">
@@ -520,6 +573,10 @@ document.addEventListener("DOMContentLoaded", () => {
       </option>
 
     `).join("");
+
+    if (reports.some(report => report.id === selectedValue)) {
+      $("messageReport").value = selectedValue;
+    }
   }
 
   /* SALVAR MENSAGEM */
@@ -530,6 +587,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const text = $("messageText").value.trim();
 
+    const reportId = $("messageReport").value;
+
     if (text.length < 5) {
 
       $("messageFeedback").textContent =
@@ -538,11 +597,19 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if (!reportId) {
+
+      $("messageFeedback").textContent =
+        "Selecione um relato para vincular a mensagem.";
+
+      return;
+    }
+
     messages.unshift({
 
-      id: $("messageReport").value,
+      id: reportId,
 
-      date: "16/11/2026",
+      date: getCurrentDate(),
 
       text: text
 
@@ -559,7 +626,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  /* CRIAR NOVA DENÚNCIA */
+  /* CRIAR NOVO REGISTRO */
 
   $("newReportForm").addEventListener("submit", event => {
 
@@ -582,8 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const id = "EP-" +
-      String(25 + reports.length - 5).padStart(3, "0");
+    const id = getNextReportId();
 
     reports.unshift({
 
@@ -595,7 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       place: place,
 
-      date: "16/11/2026",
+      date: getCurrentDate(),
 
       status: "Em análise",
 
@@ -616,6 +682,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderTable();
 
+    renderPeople();
+
+    renderMessages();
+
     showToast("Novo registro demonstrativo criado.");
 
   });
@@ -631,7 +701,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  /* INICIALIZAÇÃO */
+  /* INICIALIZAÇÃO DO PAINEL */
 
   renderRecent();
 
@@ -644,3 +714,4 @@ document.addEventListener("DOMContentLoaded", () => {
   updateStats();
 
 });
+
